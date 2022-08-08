@@ -64,11 +64,16 @@ ifeq ($(BOARD_WIFI_VENDOR), realtek)
     BOARD_HOSTAPD_DRIVER        := NL80211
     BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_rtl
 
-    WIFI_DRIVER_MODULE_PATH := "/system/vendor/modules/8723bs.ko"
-    WIFI_DRIVER_MODULE_NAME := "8723bs"
+    WIFI_DRIVER_MODULE_PATH := "/system/vendor/modules/8723ds.ko"
+    WIFI_DRIVER_MODULE_NAME := "8723ds"
     WIFI_DRIVER_MODULE_ARG := "ifname=wlan0 if2name=p2p0 rtw_power_mgnt=0"
+    WIFI_FIRMWARE_LOADER := "rtw_fwloader"
+    WIFI_DRIVER_FW_PATH_STA := "STA"
+    WIFI_DRIVER_FW_PATH_AP := "AP"
+    WIFI_DRIVER_FW_PATH_P2P := "P2P"
+    WIFI_DRIVER_FW_PATH_PARAM := "/dev/null"
 
-    BOARD_USR_WIFI := rtl8723bs
+    BOARD_USR_WIFI := rtl8723ds
 endif
 
 # 1.2 broadcom wifi support
@@ -104,7 +109,7 @@ endif
 # make sure BOARD_HAVE_BLUETOOTH is true for every bt vendor
 BOARD_HAVE_BLUETOOTH := true
 #BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_HAVE_BLUETOOTH_NAME := rtl8723bs
+BOARD_HAVE_BLUETOOTH_NAME := rtl8723ds
 BOARD_HAVE_BLUETOOTH_RTK_COEX := true
 BOARD_HAVE_BLUETOOTH_RTK := true
 BLUETOOTH_HCI_USE_RTK_H5 := true

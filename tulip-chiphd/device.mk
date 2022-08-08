@@ -3,6 +3,7 @@ $(call inherit-product, device/softwinner/tulip-common/tulip-common.mk)
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, hardware/realtek/bluetooth/firmware/rtlbtfw_cfg.mk)
 $(call inherit-product, vendor/supersu/vendor.mk)
+$(call inherit-product, vendor/hacks/binaries/vendor.mk)
 
 KERNEL_SRC_DIR ?= $(ANDROID_BUILD_TOP)/linux/kernel-tulip
 KERNEL_CFG_NAME ?= sun50iw1p1smp_android
@@ -49,6 +50,17 @@ PRODUCT_PACKAGES += \
 DEVICE_PACKAGE_OVERLAYS += \
     device/softwinner/tulip-chiphd/overlay
 
+# NFC packages
+# PRODUCT_PACKAGES += \
+#    libnfc \
+#    libnfc_jni \
+#    nfc.default \
+#    Nfc \
+#    Tag \
+#    com.android.nfc_extras
+PRODUCT_PACKAGES += \
+    libnfc-orig
+
 PRODUCT_COPY_FILES += \
     device/softwinner/tulip-chiphd/fstab.sun50iw1p1:root/fstab.sun50iw1p1 \
     device/softwinner/tulip-chiphd/init.sun50iw1p1.rc:root/init.sun50iw1p1.rc \
@@ -57,6 +69,16 @@ PRODUCT_COPY_FILES += \
     device/softwinner/tulip-chiphd/initialize_disk.sh:root/initialize_disk.sh \
     device/softwinner/tulip-chiphd/configure_system.sh:system/bin/configure_system.sh \
     device/softwinner/tulip-chiphd/recovery.fstab:recovery.fstab
+
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+    NxpNfcAndroid/android.hardware.nfc.hcef.xml:system/etc/permissions/android.hardware.nfc.hcef.xml \
+    NxpNfcAndroid/conf/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    NxpNfcAndroid/conf/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 PRODUCT_COPY_FILES += \
     device/softwinner/tulip-chiphd/twrp.fstab:recovery/root/etc/twrp.fstab
@@ -92,7 +114,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.boot.console=console
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.8723b_bt.used=true
+    ro.product.8723d_bt.used=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.fw.force_adoptable=1 \

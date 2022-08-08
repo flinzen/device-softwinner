@@ -1,7 +1,7 @@
 $(call inherit-product, device/softwinner/tulip-chiphd/device.mk)
 $(call inherit-product, build/target/product/full_base.mk)
 
-GAPPS_VARIANT := micro
+GAPPS_VARIANT := nano
 GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_BROWSER_OVERRIDES := true
 
