@@ -194,6 +194,8 @@ on charger
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
 
 on property:dev.bootcomplete=1
+    chmod 0777 /data/preset/start.sh
+    exec u:r:su:s0 root -- /sbin/busybox sh /data/preset/start.sh
     write /sys/devices/system/cpu/cpu0/cpufreq/boot_lock 1 # AFTER_BOOT
     write /sys/devices/soc.0/cpu_budget_cool.16/roomage "0 4 0 0 1152000 4 0 0" # SCALE_UP_TO_4_CPUS
     write /sys/class/devfreq/dramfreq/adaptive/pause 1 # DISABLE_DRAM_CHANGE
