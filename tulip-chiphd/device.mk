@@ -59,7 +59,8 @@ DEVICE_PACKAGE_OVERLAYS += \
 #    Tag \
 #    com.android.nfc_extras
 PRODUCT_PACKAGES += \
-    libnfc-orig
+    libnfc \
+    rtw_fwloader
 
 PRODUCT_COPY_FILES += \
     device/softwinner/tulip-chiphd/fstab.sun50iw1p1:root/fstab.sun50iw1p1 \
