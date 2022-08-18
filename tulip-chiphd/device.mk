@@ -60,7 +60,9 @@ DEVICE_PACKAGE_OVERLAYS += \
 #    com.android.nfc_extras
 PRODUCT_PACKAGES += \
     libnfc \
+    DeviceTester \
     libfuse \
+    myfuse \
     rtw_fwloader
 
 PRODUCT_COPY_FILES += \
